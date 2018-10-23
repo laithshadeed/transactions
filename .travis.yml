@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "6"
+  - "8"
+  - "9"
+  - "10"
+sudo: false
+branches:
+  only:
+    - master
+
+# Run npm test always
+script:
+  - "yarn test"
+after_success:
+  - 'if [ "$node_js" = "8" ]; then yarn run coveralls; fi'
