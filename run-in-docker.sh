@@ -4,4 +4,5 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
+yarn
 yarn test
