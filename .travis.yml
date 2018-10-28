@@ -1,9 +1,9 @@
 language: node_js
 node_js:
-- '6'
-- '8'
-- '9'
-- '10'
+- "6"
+- "8"
+- "9"
+- "10"
 sudo: false
 branches:
   only:
@@ -16,7 +16,7 @@ before_script:
 script:
 - yarn test
 after_success:
-- if [ "$node_js" = "8" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+- if [ "$TRAVIS_NODE_VERSION" = "8" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
 env:
   global:
     secure: zevYL/WlnZcSVuu2jgPhseiEq3GXsLOoGR94MYbFhuNjuG1XhdLRqs0U407oAWAx7fyY/ZiwRh2IuqjM3wIFwx7AdzGmAR6oI3H9PBZfQXIRDpXhotiVU4iZ5PXxU2ejwcaL/n5LmWOv2yaSBQUDtfcVl5SFhyhON1FUQVe+vObfVe1rVlTtPH1OesBnny6sWWa19yRfDQ6HsPMphPAQ8sGsw9aEuqaURUgkh3U2ZPVQLiRN0L+90TpBtRStC7VwKaIs88y6ehAN+lLM3jQnLeXd9OmZt2C0Ch1MXLI53C2nanP/M98olfU+Y1Ucsii/sj52mduILYt6reLzY9Tzpc49MfS+rl9/HStxoadfuUPnyRUgt8RL3izXTuPCkY+8Oyww1kEZdPDnSFFPbaCgX6HyLKc/9s81Egp67P3FCw1zhX0VBqU1nvXF9ECf+rYBh84BjZyiRuFguLA3TOG4SE1xkZqbx03oat3zOTL2VvxxtviYBiAZZtuAYYgqO9inyvxJHKXHP5ZkDC0BKw/si6PFKS5zxaYtqhdnyE7JyTOk5Acc1VEn+oCospnbxSvTn8RfGbQ+5Z40J/JRtzAzb3wyNwIkEewTQ1D2dcc0vlBODbrahS7MwxG8U9VTWvVyvl/kxeUqoWkP6ttiIPgHDtsqxP4dpBCs0W63EZHYfzs=
