@@ -46,7 +46,10 @@ function findDuplicateTransactions(transactions = []) {
   const similarTransactions = groupSimilarTransactions(transactions);
   similarTransactions.forEach((possibleDuplicates) => {
     const sortedTransactions = possibleDuplicates.sort(sortTransactionsByTimestamp);
-    duplicates.push(getDuplicateTransactions(sortedTransactions));
+    const actualDuplicates = getDuplicateTransactions(sortedTransactions);
+    if (actualDuplicates.length !== 0) {
+      duplicates.push(actualDuplicates);
+    }
   });
 
   return duplicates;
