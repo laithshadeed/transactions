@@ -1,12 +1,7 @@
-function getBalanceByCategoryInPeriod(transactions = [], category, start, end) {
-  return transactions
-    .filter(t => t.category === category && new Date(t.time) >= start && new Date(t.time) < end)
-    .reduce((balance, t) => balance + t.amount, 0);
-}
+const MAX_MS_BETWEEN_DUPLICATE_TRANSACTION = 60e3; // In milliseconds
 
-function findDuplicateTransactions(transactions = []) {
-  const duplicates = [];
-  const groupedTransactions = transactions.reduce((map, t) => {
+function groupSimilarTransactions(transactions) {
+  return transactions.reduce((map, t) => {
     const k = t.sourceAccount + t.targetAccount + t.category + t.amount;
     const v = map.get(k) || [];
     const obj = { timestamp: new Date(t.time), transaction: t };
@@ -14,40 +9,53 @@ function findDuplicateTransactions(transactions = []) {
     map.set(k, v);
     return map;
   }, new Map());
+}
 
-  groupedTransactions.forEach((possibleDuplicates) => {
-    const actualDuplicates = [];
-    const sortedTransactions = possibleDuplicates.sort((o1, o2) => {
-      if (o1.timestamp > o2.timestamp) {
-        return 1;
+function sortTransactionsByTimestamp(a, b) {
+  if (a.timestamp > b.timestamp) {
+    return 1;
+  }
+
+  if (a.timestamp < b.timestamp) {
+    return -1;
+  }
+
+  return 0;
+}
+
+function getDuplicateTransactions(transactions) {
+  const duplicates = [];
+  const firstTransaction = transactions.shift();
+  transactions.reduce((a, b) => {
+    if (b.timestamp - a.timestamp <= MAX_MS_BETWEEN_DUPLICATE_TRANSACTION) {
+      if (duplicates.length === 0) {
+        duplicates.push(a.transaction);
       }
 
-      if (o1.timestamp < o2.timestamp) {
-        return -1;
-      }
+      duplicates.push(b.transaction);
+    }
 
-      return 0;
-    });
+    return b;
+  }, firstTransaction);
 
-    sortedTransactions.forEach((o1, i) => {
-      if (i === 0) {
-        return;
-      }
-      const o0 = sortedTransactions[i - 1];
+  return duplicates;
+}
 
-      if (o1.timestamp - o0.timestamp < 60e3) {
-        if (actualDuplicates.length === 0) {
-          actualDuplicates.push(o0.transaction);
-        }
-
-        actualDuplicates.push(o1.transaction);
-      }
-    });
-
-    duplicates.push(actualDuplicates);
+function findDuplicateTransactions(transactions = []) {
+  const duplicates = [];
+  const similarTransactions = groupSimilarTransactions(transactions);
+  similarTransactions.forEach((possibleDuplicates) => {
+    const sortedTransactions = possibleDuplicates.sort(sortTransactionsByTimestamp);
+    duplicates.push(getDuplicateTransactions(sortedTransactions));
   });
 
   return duplicates;
+}
+
+function getBalanceByCategoryInPeriod(transactions = [], category, start, end) {
+  return transactions
+    .filter(t => t.category === category && new Date(t.time) >= start && new Date(t.time) < end)
+    .reduce((balance, t) => balance + t.amount, 0);
 }
 
 module.exports = {

@@ -123,6 +123,22 @@ describe("findDuplicateTransactions()", () => {
           category: "other",
           time: "2018-03-02T10:33:00.000Z",
         },
+        {
+          id: 51,
+          sourceAccount: "A",
+          targetAccount: "C",
+          amount: 250,
+          category: "shopping",
+          time: "2018-03-04T10:32:01.001Z",
+        },
+        {
+          id: 50,
+          sourceAccount: "A",
+          targetAccount: "C",
+          amount: 250,
+          category: "shopping",
+          time: "2018-03-04T10:33:01.001Z",
+        },
       ]),
       [
         [
@@ -167,6 +183,24 @@ describe("findDuplicateTransactions()", () => {
             amount: 250,
             category: "other",
             time: "2018-03-02T10:33:05.000Z",
+          },
+        ],
+        [
+          {
+            id: 51,
+            sourceAccount: "A",
+            targetAccount: "C",
+            amount: 250,
+            category: "shopping",
+            time: "2018-03-04T10:32:01.001Z",
+          },
+          {
+            id: 50,
+            sourceAccount: "A",
+            targetAccount: "C",
+            amount: 250,
+            category: "shopping",
+            time: "2018-03-04T10:33:01.001Z",
           },
         ],
       ]
