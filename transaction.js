@@ -62,4 +62,4 @@ function getBalanceByCategoryInPeriod(transactions = [], category, startTime, en
     .reduce((balance, t) => balance + t.amount, 0);
 }
 
-export { getBalanceByCategoryInPeriod, findDuplicateTransactions };
+module.exports = {getBalanceByCategoryInPeriod, findDuplicateTransactions };

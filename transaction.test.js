@@ -1,6 +1,6 @@
-import { getBalanceByCategoryInPeriod, findDuplicateTransactions } from "./transaction.js";
+const { getBalanceByCategoryInPeriod, findDuplicateTransactions } = require("./transaction.js");
 
-test("getBalanceByCategoryInPeriod()", () => {
+describe("getBalanceByCategoryInPeriod()", () => {
   test("returns 0 if there are no transactions", () => {
     expect(getBalanceByCategoryInPeriod([], "groceries", new Date("2018-03-01"), new Date("2018-03-31"))).toEqual(0);
   });
@@ -57,7 +57,7 @@ test("getBalanceByCategoryInPeriod()", () => {
   });
 });
 
-test("findDuplicateTransactions()", () => {
+describe("findDuplicateTransactions()", () => {
   test("returns empty array if there are no transactions", () => {
     expect(findDuplicateTransactions([])).toEqual([]);
   });

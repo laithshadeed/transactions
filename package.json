@@ -3,16 +3,14 @@
   "version": "0.0.2",
   "description": "Process transactions!",
   "main": "transaction.js",
-  "type": "module",
   "scripts": {
     "prettier": "prettier-eslint --prettier-last --write {src,test}/**/*.js",
-    "eslint": "eslint --fix {src,test}/**/*.js"
+    "eslint": "eslint --fix {src,test}/**/*.js",
+    "test": "jest"
   },
   "author": "Laith Shadeed",
   "license": "MIT",
   "dependencies": {
-    "@babel/preset-env": "^7.11.5",
-    "babel-jest": "^26.3.0",
     "coveralls": "^3.1.0",
     "eslint": "^7.8.1",
     "eslint-config-airbnb": "^18.2.0",
