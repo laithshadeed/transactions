@@ -11,7 +11,4 @@ engines:
     enabled: true
 ratings:
   paths:
-    - src/*.js
-exclude_paths:
-  - "node_modules/**"
-  - "test/**"
+    - *.js

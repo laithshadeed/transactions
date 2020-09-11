@@ -14,3 +14,6 @@ jobs:
     - uses: borales/actions-yarn@v2.3.0
       with:
         cmd: check-format
+    - uses: paambaati/codeclimate-action@v2.6.0
+      env:
+        CC_TEST_REPORTER_ID: 40dcdb9f26a3182f43fb65ae6f2e5555e2a6c112c6fd9764b234a43ef3747b2e
