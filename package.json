@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "yarn eslint *.js",
-    "format-check": "yarn prettier --check *.js"
+    "check-format": "yarn prettier --check *.js",
+    "test": "jest"
   },
   "dependencies": {
     "eslint": "^7.8.1",
