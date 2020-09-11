@@ -13,5 +13,5 @@ $ yarn test
 OR
 
 ```
-$ docker run laithshadeed/transactions:0.3
+$ docker run laithshadeed/transactions:0.4
 ```
