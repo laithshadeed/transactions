@@ -1,5 +1,7 @@
 ---
-extends: airbnb-base
+extends:
+  - airbnb-base
+  - prettier
 rules:
   quotes: ["error", "double"]
   implicit-arrow-linebreak: "off"
@@ -7,3 +9,7 @@ rules:
   operator-linebreak: "off"
   comma-dangle: "off"
   no-param-reassign: ["error", {"props": false}]
+globals:
+  describe: readonly
+  test: readonly
+  expect: readonly

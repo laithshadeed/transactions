@@ -57,9 +57,10 @@ function findDuplicateTransactions(transactions = []) {
 
 function getBalanceByCategoryInPeriod(transactions = [], category, startTime, endTime) {
   return transactions
-    .filter(t => t.category === category && new Date(t.time) >= startTime && new Date(t.time) <
-    endTime)
+    .filter(
+      (t) => t.category === category && new Date(t.time) >= startTime && new Date(t.time) < endTime
+    )
     .reduce((balance, t) => balance + t.amount, 0);
 }
 
-module.exports = {getBalanceByCategoryInPeriod, findDuplicateTransactions };
+module.exports = { getBalanceByCategoryInPeriod, findDuplicateTransactions };

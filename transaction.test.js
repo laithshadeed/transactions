@@ -2,7 +2,9 @@ const { getBalanceByCategoryInPeriod, findDuplicateTransactions } = require("./t
 
 describe("getBalanceByCategoryInPeriod()", () => {
   test("returns 0 if there are no transactions", () => {
-    expect(getBalanceByCategoryInPeriod([], "groceries", new Date("2018-03-01"), new Date("2018-03-31"))).toEqual(0);
+    expect(
+      getBalanceByCategoryInPeriod([], "groceries", new Date("2018-03-01"), new Date("2018-03-31"))
+    ).toEqual(0);
   });
 
   test("should calculate balance for eating_out between 2018-03-12 & 2018-03-14", () => {
@@ -53,7 +55,8 @@ describe("getBalanceByCategoryInPeriod()", () => {
         "eating_out",
         new Date("2018-03-12"),
         new Date("2018-03-14")
-      )).toEqual(-22.05);
+      )
+    ).toEqual(-22.05);
   });
 });
 
@@ -145,73 +148,70 @@ describe("findDuplicateTransactions()", () => {
           category: "books",
           time: "2017-03-03T10:32:01.001Z",
         },
-
       ])
-    ).toEqual(
+    ).toEqual([
       [
-        [
-          {
-            id: 1,
-            sourceAccount: "A",
-            targetAccount: "B",
-            amount: -100,
-            category: "eating_out",
-            time: "2018-03-02T10:33:00.000Z",
-          },
-          {
-            id: 2,
-            sourceAccount: "A",
-            targetAccount: "B",
-            amount: -100,
-            category: "eating_out",
-            time: "2018-03-02T10:33:50.000Z",
-          },
-          {
-            id: 3,
-            sourceAccount: "A",
-            targetAccount: "B",
-            amount: -100,
-            category: "eating_out",
-            time: "2018-03-02T10:34:30.000Z",
-          },
-        ],
-        [
-          {
-            id: 5,
-            sourceAccount: "A",
-            targetAccount: "C",
-            amount: -250,
-            category: "other",
-            time: "2018-03-02T10:33:00.000Z",
-          },
-          {
-            id: 6,
-            sourceAccount: "A",
-            targetAccount: "C",
-            amount: -250,
-            category: "other",
-            time: "2018-03-02T10:33:05.000Z",
-          },
-        ],
-        [
-          {
-            id: 51,
-            sourceAccount: "A",
-            targetAccount: "C",
-            amount: -250,
-            category: "shopping",
-            time: "2018-03-04T10:32:01.001Z",
-          },
-          {
-            id: 50,
-            sourceAccount: "A",
-            targetAccount: "C",
-            amount: -250,
-            category: "shopping",
-            time: "2018-03-04T10:33:01.001Z",
-          },
-        ],
-      ]
-    );
+        {
+          id: 1,
+          sourceAccount: "A",
+          targetAccount: "B",
+          amount: -100,
+          category: "eating_out",
+          time: "2018-03-02T10:33:00.000Z",
+        },
+        {
+          id: 2,
+          sourceAccount: "A",
+          targetAccount: "B",
+          amount: -100,
+          category: "eating_out",
+          time: "2018-03-02T10:33:50.000Z",
+        },
+        {
+          id: 3,
+          sourceAccount: "A",
+          targetAccount: "B",
+          amount: -100,
+          category: "eating_out",
+          time: "2018-03-02T10:34:30.000Z",
+        },
+      ],
+      [
+        {
+          id: 5,
+          sourceAccount: "A",
+          targetAccount: "C",
+          amount: -250,
+          category: "other",
+          time: "2018-03-02T10:33:00.000Z",
+        },
+        {
+          id: 6,
+          sourceAccount: "A",
+          targetAccount: "C",
+          amount: -250,
+          category: "other",
+          time: "2018-03-02T10:33:05.000Z",
+        },
+      ],
+      [
+        {
+          id: 51,
+          sourceAccount: "A",
+          targetAccount: "C",
+          amount: -250,
+          category: "shopping",
+          time: "2018-03-04T10:32:01.001Z",
+        },
+        {
+          id: 50,
+          sourceAccount: "A",
+          targetAccount: "C",
+          amount: -250,
+          category: "shopping",
+          time: "2018-03-04T10:33:01.001Z",
+        },
+      ],
+    ]);
   });
 });

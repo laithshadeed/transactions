@@ -1823,24 +1823,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-airbnb@npm:^18.2.0":
-  version: 18.2.0
-  resolution: "eslint-config-airbnb@npm:18.2.0"
+"eslint-config-prettier@npm:^6.11.0":
+  version: 6.11.0
+  resolution: "eslint-config-prettier@npm:6.11.0"
   dependencies:
-    eslint-config-airbnb-base: ^14.2.0
-    object.assign: ^4.1.0
-    object.entries: ^1.1.2
+    get-stdin: ^6.0.0
   peerDependencies:
-    eslint: ^5.16.0 || ^6.8.0 || ^7.2.0
-    eslint-plugin-import: ^2.21.2
-    eslint-plugin-jsx-a11y: ^6.3.0
-    eslint-plugin-react: ^7.20.0
-    eslint-plugin-react-hooks: ^4 || ^3 || ^2.3.0 || ^1.7.0
-  checksum: 9cd736cafc339a4c3f5eb59f5d77fb98e986f06b07ff4fe78149c08bf2d202b097879cddceb812a36aeda99a099e0f2f1efe7a896943d6b191190c41eeb52835
+    eslint: ">=3.14.1"
+  bin:
+    eslint-config-prettier-check: bin/cli.js
+  checksum: 59efd906c78d47753a673c205ef515fdab19cd6ea0fd992c9cb2366804861746238244526ab565ccc7448569f5472ce7646a77d0c9998787192e4ebae95df71d
   languageName: node
   linkType: hard
 
-"eslint-import-resolver-node@npm:^0.3.3":
+"eslint-import-resolver-node@npm:^0.3.3, eslint-import-resolver-node@npm:^0.3.4":
   version: 0.3.4
   resolution: "eslint-import-resolver-node@npm:0.3.4"
   dependencies:
@@ -2353,6 +2349,13 @@ fsevents@^2.1.2:
   version: 0.1.0
   resolution: "get-package-type@npm:0.1.0"
   checksum: a5b8beaf68d8bcdb507e23b3d2b6458e54b9061e84e2a8a94b846c8e1d794beb47fdcbda895da16ae59225bb3ea1608c0719e4f986e8a987ec2f228eaf00d78b
+  languageName: node
+  linkType: hard
+
+"get-stdin@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "get-stdin@npm:6.0.0"
+  checksum: b51d664838aef7f8353dc57371ce59cea54d8d584fec015a9d89d24561e95b97806d5b5ba120bc81574c9ed63cb3e210176ffa0ff9263c7e7ba4d56d0fe54913
   languageName: node
   linkType: hard
 
@@ -5452,7 +5455,9 @@ fsevents@^2.1.2:
   resolution: "transactions@workspace:."
   dependencies:
     eslint: ^7.8.1
-    eslint-config-airbnb: ^18.2.0
+    eslint-config-airbnb-base: ^14.2.0
+    eslint-config-prettier: ^6.11.0
+    eslint-import-resolver-node: ^0.3.4
     eslint-plugin-import: ^2.22.0
     jest: ^26.4.2
     prettier: ^2.1.1
