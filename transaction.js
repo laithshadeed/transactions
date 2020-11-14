@@ -2,7 +2,7 @@ const MAX_MS_BETWEEN_DUPLICATE_TRANSACTION = 60e3; // In milliseconds
 
 function groupSimilarTransactions(transactions) {
   return transactions.reduce((map, t) => {
-    const k = t.sourceAccount + t.targetAccount + t.category + t.amount;
+    const k = `${t.sourceAccount}:${t.targetAccount}:${t.category}:${t.amount}`;
     const v = map.get(k) || [];
     const obj = { timestamp: new Date(t.time), transaction: t };
     v.push(obj);
@@ -50,6 +50,15 @@ function findDuplicateTransactions(transactions = []) {
     if (actualDuplicates.length !== 0) {
       duplicates.push(actualDuplicates);
     }
+  });
+
+  // Sort duplicate groups by first transaction in the group
+  duplicates.sort((a, b) => {
+    let t1 = new Date(a[0].time);
+    let t2 = new Date(b[0].time);
+    if (t1 > t2) return 1;
+    if (t1 < t2) return -1;
+    return 0;
   });
 
   return duplicates;

@@ -13,3 +13,4 @@ globals:
   describe: readonly
   test: readonly
   expect: readonly
+  it: readonly
